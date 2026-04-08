@@ -12,3 +12,14 @@ Scope constraints:
 - No file uploads (paste text only)
 - No database
 - No multi-job tracking
+
+## Local setup
+
+1. Install dependencies: `npm install`
+2. Run ETL to generate processed data: `npm run etl`
+3. Start dev server: `npm run dev`
+
+## LLM configuration
+
+Set `OPENAI_API_KEY` in your environment to enable the live model call.
+Optional: `OPENAI_MODEL` (defaults to `gpt-4o-mini`).

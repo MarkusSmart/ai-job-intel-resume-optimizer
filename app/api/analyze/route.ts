@@ -1,4 +1,5 @@
 import { analyzeResume, ProcessedJob } from "@/lib/analyze";
+import { generateLlmInsights } from "@/lib/llm";
 import { readFile } from "fs/promises";
 import path from "path";
 
@@ -28,5 +29,14 @@ export async function POST(request: Request) {
     processedJobs,
   });
 
-  return Response.json(result);
+  const insights = await generateLlmInsights({
+    jobText: payload.jobText,
+    resumeText: payload.resumeText,
+    gaps: result.gaps,
+  });
+
+  return Response.json({
+    ...result,
+    ...insights,
+  });
 }

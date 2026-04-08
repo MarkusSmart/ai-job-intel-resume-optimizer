@@ -88,3 +88,8 @@ button:hover {
   margin-right: 8px;
   margin-bottom: 8px;
 }
+
+ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}

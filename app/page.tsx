@@ -7,6 +7,9 @@ type AnalysisResponse = {
   gaps: string[];
   keywords: string[];
   summary: string;
+  gap_skills: string[];
+  resume_improvements: string[];
+  keyword_suggestions: string[];
 };
 
 const defaultJob = `Data Analyst\nWe are looking for a Data Analyst with SQL and Python experience. Nice to have: ETL, dashboarding.`;
@@ -103,6 +106,36 @@ export default function Home() {
             <strong>Keywords to highlight:</strong>
             <div>
               {result.keywords.map((keyword) => (
+                <span key={keyword} className="pill">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <strong>LLM skill gaps:</strong>
+            <div>
+              {result.gap_skills.length === 0
+                ? "None detected."
+                : result.gap_skills.map((gap) => (
+                    <span key={gap} className="pill">
+                      {gap}
+                    </span>
+                  ))}
+            </div>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <strong>Suggested resume bullets:</strong>
+            <ul>
+              {result.resume_improvements.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <strong>Suggested keywords:</strong>
+            <div>
+              {result.keyword_suggestions.map((keyword) => (
                 <span key={keyword} className="pill">
                   {keyword}
                 </span>

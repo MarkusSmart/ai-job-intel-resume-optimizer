@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "vitest"
+    "test": "vitest",
+    "etl": "node scripts/etl.mjs"
   },
   "dependencies": {
     "next": "16.2.3",

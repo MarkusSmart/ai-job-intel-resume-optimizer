@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Data Analyst",
+    "company": "ExampleCo",
+    "level": "Mid",
+    "location": "Remote",
+    "description": "We are looking for a Data Analyst with SQL and Python experience. Nice to have: ETL, dashboarding.",
+    "skills": ["SQL", "Python", "Statistics"],
+    "keywords": ["SQL", "Python", "ETL", "Dashboarding"],
+    "responsibilities": ["Build dashboards", "Analyze data"],
+    "must_haves": ["SQL", "Python"],
+    "nice_to_haves": ["ETL", "Dashboarding"]
+  },
+  {
+    "title": "Product Data Scientist",
+    "company": "InsightWorks",
+    "level": "Senior",
+    "location": "Hybrid",
+    "description": "Own product analytics, experiment design, and stakeholder insights. Must have Python, experimentation, and SQL. Nice to have: causal inference, dbt.",
+    "skills": ["Python", "SQL", "Experimentation", "Statistics"],
+    "keywords": ["Python", "SQL", "A/B testing", "dbt", "causal inference"],
+    "responsibilities": ["Run experiments", "Partner with product teams"],
+    "must_haves": ["Python", "SQL", "experimentation"],
+    "nice_to_haves": ["causal inference", "dbt"]
+  },
+  {
+    "title": "Business Intelligence Developer",
+    "company": "Northwind",
+    "level": "Mid",
+    "location": "Onsite",
+    "description": "Maintain BI pipelines and dashboards. Must have SQL, data modeling, and Power BI. Nice to have: Airflow, AWS.",
+    "skills": ["SQL", "Data modeling", "Power BI"],
+    "keywords": ["SQL", "Power BI", "Airflow", "AWS"],
+    "responsibilities": ["Maintain BI pipelines", "Build KPI dashboards"],
+    "must_haves": ["SQL", "data modeling", "power bi"],
+    "nice_to_haves": ["airflow", "aws"]
+  }
+]

@@ -1,0 +1,32 @@
+name: ETL Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "data/jobs.json"
+      - "scripts/etl.mjs"
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ETL
+        run: npm run etl
+
+      - name: Upload processed data
+        uses: actions/upload-artifact@v4
+        with:
+          name: processed-jobs
+          path: data/processed_jobs.json

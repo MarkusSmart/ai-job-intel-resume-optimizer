@@ -1,15 +1,14 @@
 import OpenAI from "openai";
 import { z } from "zod";
 import { zodTextFormat } from "openai/helpers/zod";
+import type { LlmInsights } from "./types";
 
-export const LlmInsightsSchema = z.object({
+export const LlmInsightsSchema: z.ZodType<LlmInsights> = z.object({
   gap_skills: z.array(z.string()).min(0),
   resume_improvements: z.array(z.string()).min(1).max(5),
   keyword_suggestions: z.array(z.string()).min(0),
   summary: z.string(),
 });
-
-export type LlmInsights = z.infer<typeof LlmInsightsSchema>;
 
 const defaultModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
 

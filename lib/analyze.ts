@@ -1,24 +1,4 @@
-export type ProcessedJob = {
-  id: string;
-  title: string;
-  company: string;
-  level: string;
-  location: string;
-  raw_text: string;
-  skills: string[];
-  keywords: string[];
-  responsibilities: string[];
-  must_haves: string[];
-  nice_to_haves: string[];
-  updated_at: string;
-};
-
-export type AnalysisResult = {
-  matchScore: number;
-  gaps: string[];
-  keywords: string[];
-  summary: string;
-};
+import type { AnalysisResult, ProcessedJob } from "./types";
 
 type AnalyzeInput = {
   jobText: string;

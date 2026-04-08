@@ -1,4 +1,5 @@
-import { analyzeResume, ProcessedJob } from "./analyze";
+import { analyzeResume } from "./analyze";
+import type { ProcessedJob } from "./types";
 
 const baseJob: ProcessedJob = {
   id: "job-1",

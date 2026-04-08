@@ -1,14 +1,16 @@
-import { analyzeResume, ProcessedJob } from "@/lib/analyze";
+import { createFileJobsProvider } from "@/lib/jobs";
 import { generateLlmInsights } from "@/lib/llm";
-import { readFile } from "fs/promises";
-import path from "path";
+import { createAnalysisPipeline } from "@/lib/pipeline";
 
 type AnalyzePayload = {
   jobText?: string;
   resumeText?: string;
 };
 
-const dataPath = path.join(process.cwd(), "data", "processed_jobs.json");
+const pipeline = createAnalysisPipeline({
+  jobsProvider: createFileJobsProvider(),
+  llmProvider: { generate: generateLlmInsights },
+});
 
 export async function POST(request: Request) {
   const payload = (await request.json()) as AnalyzePayload;
@@ -20,23 +22,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const raw = await readFile(dataPath, "utf-8");
-  const processedJobs = JSON.parse(raw) as ProcessedJob[];
-
-  const result = analyzeResume({
+  const result = await pipeline.analyze({
     jobText: payload.jobText,
     resumeText: payload.resumeText,
-    processedJobs,
   });
 
-  const insights = await generateLlmInsights({
-    jobText: payload.jobText,
-    resumeText: payload.resumeText,
-    gaps: result.gaps,
-  });
-
-  return Response.json({
-    ...result,
-    ...insights,
-  });
+  return Response.json(result);
 }

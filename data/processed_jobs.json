@@ -1,0 +1,16 @@
+[
+  {
+    "id": "job-1",
+    "title": "Data Analyst",
+    "company": "ExampleCo",
+    "level": "Mid",
+    "location": "Remote",
+    "raw_text": "We are looking for a Data Analyst with SQL and Python experience. Nice to have: ETL, dashboarding.",
+    "skills": ["sql", "python", "statistics"],
+    "keywords": ["sql", "python", "etl", "dashboarding"],
+    "responsibilities": ["build dashboards", "analyze data"],
+    "must_haves": ["sql", "python"],
+    "nice_to_haves": ["etl", "dashboarding"],
+    "updated_at": "2026-04-08"
+  }
+]

@@ -8,7 +8,12 @@ export type JobsProvider = {
 
 export const createFileJobsProvider = (filePath?: string): JobsProvider => {
   const resolvedPath =
-    filePath ?? path.join(process.cwd(), "data", "processed_jobs.json");
+    filePath ??
+    path.join(
+      /*turbopackIgnore: true*/ process.cwd(),
+      "data",
+      "processed_jobs.json"
+    );
 
   return {
     list: async () => {

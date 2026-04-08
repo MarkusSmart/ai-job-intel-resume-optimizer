@@ -12,17 +12,11 @@ export const LlmInsightsSchema: z.ZodType<LlmInsights> = z.object({
 
 const defaultModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
-const buildPrompt = (jobText: string, resumeText: string) => [
-  {
-    role: "system",
-    content:
-      "You are a resume optimization assistant. Provide concise, structured guidance tailored to the job posting.",
-  },
-  {
-    role: "user",
-    content: `Job posting:\n${jobText}\n\nResume:\n${resumeText}\n\nReturn gaps, bullet improvements, keyword suggestions, and a short summary.`,
-  },
-];
+const instructions =
+  "You are a resume optimization assistant. Provide concise, structured guidance tailored to the job posting.";
+
+const buildInput = (jobText: string, resumeText: string) =>
+  `Job posting:\n${jobText}\n\nResume:\n${resumeText}\n\nReturn gaps, bullet improvements, keyword suggestions, and a short summary.`;
 
 const stubResponse = (gaps: string[]): LlmInsights => ({
   gap_skills: gaps,
@@ -51,7 +45,8 @@ export const generateLlmInsights = async ({
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const response = await client.responses.parse({
     model: defaultModel,
-    input: buildPrompt(jobText, resumeText),
+    instructions,
+    input: buildInput(jobText, resumeText),
     text: {
       format: zodTextFormat(LlmInsightsSchema, "resume_insights"),
     },

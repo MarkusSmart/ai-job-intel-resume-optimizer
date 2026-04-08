@@ -13,6 +13,10 @@ Scope constraints:
 - No database
 - No multi-job tracking
 
+## Live deployment
+
+Vercel URL: `https://ai-job-intel-resume-optimizer.vercel.app`
+
 ## Local setup
 
 1. Install dependencies: `npm install`

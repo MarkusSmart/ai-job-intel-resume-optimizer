@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest",
-    "etl": "node scripts/etl.mjs"
+    "etl": "node scripts/etl.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "16.2.3",
@@ -17,6 +18,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19.2.3",

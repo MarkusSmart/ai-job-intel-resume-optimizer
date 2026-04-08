@@ -58,14 +58,20 @@ export default function Home() {
       <section className="panel grid">
         <div>
           <h2>Job Posting</h2>
+          <label htmlFor="job-posting">Job Posting</label>
           <textarea
+            id="job-posting"
+            aria-label="Job Posting"
             value={jobText}
             onChange={(event) => setJobText(event.target.value)}
           />
         </div>
         <div>
           <h2>Resume</h2>
+          <label htmlFor="resume-text">Resume</label>
           <textarea
+            id="resume-text"
+            aria-label="Resume"
             value={resumeText}
             onChange={(event) => setResumeText(event.target.value)}
           />

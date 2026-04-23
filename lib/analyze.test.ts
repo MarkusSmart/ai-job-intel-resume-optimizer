@@ -36,4 +36,47 @@ describe("analyzeResume", () => {
 
     expect(result.gaps).toEqual(["python"]);
   });
+
+  it("selects the best reference job from skill evidence even when the title differs", () => {
+    const biJobText =
+      "BI Developer role. Must have SQL, data modeling, and Power BI. Nice to have Airflow.";
+    const result = analyzeResume({
+      jobText: biJobText,
+      resumeText: "Built Power BI dashboards with strong SQL and data modeling.",
+      processedJobs: [
+        baseJob,
+        {
+          ...baseJob,
+          id: "job-3",
+          title: "Business Intelligence Developer",
+          must_haves: ["sql", "data modeling", "power bi"],
+          nice_to_haves: ["airflow", "aws"],
+          keywords: ["sql", "power bi", "airflow", "aws"],
+        },
+      ],
+    });
+
+    expect(result.metadata.matchedJobTitle).toBe("Business Intelligence Developer");
+    expect(result.gaps).toEqual([]);
+  });
+
+  it("treats common experimentation synonyms as evidence for the skill", () => {
+    const productJob: ProcessedJob = {
+      ...baseJob,
+      id: "job-2",
+      title: "Product Data Scientist",
+      must_haves: ["python", "sql", "experimentation"],
+      nice_to_haves: ["dbt"],
+      keywords: ["python", "sql", "a/b testing", "dbt"],
+    };
+
+    const result = analyzeResume({
+      jobText: "Product data scientist role with Python, SQL, and experimentation.",
+      resumeText: "Python, SQL, and A/B testing experience across growth teams.",
+      processedJobs: [productJob],
+    });
+
+    expect(result.gaps).toEqual([]);
+    expect(result.matchScore).toBeCloseTo(0.7, 5);
+  });
 });

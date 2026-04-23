@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "vitest",
     "etl": "node scripts/etl.mjs",
+    "eval": "node scripts/evaluate.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

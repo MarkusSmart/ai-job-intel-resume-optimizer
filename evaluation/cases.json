@@ -1,0 +1,65 @@
+[
+  {
+    "id": "rep-data-analyst-gap",
+    "kind": "representative",
+    "jobText": "Data Analyst role. Must have SQL and Python. Nice to have ETL and dashboarding.",
+    "resumeText": "Strong SQL background plus dashboarding work for business stakeholders.",
+    "expectedMatchedJobId": "data-analyst-exampleco-1",
+    "expectedMissingSkills": ["python"],
+    "notes": "Typical partial match for the starter Data Analyst role."
+  },
+  {
+    "id": "rep-data-analyst-strong",
+    "kind": "representative",
+    "jobText": "Data Analyst opening. We need SQL, Python, ETL, and dashboarding experience.",
+    "resumeText": "Python, SQL, ETL pipelines, and dashboarding for reporting teams.",
+    "expectedMatchedJobId": "data-analyst-exampleco-1",
+    "expectedMissingSkills": [],
+    "notes": "Clear strong-match case."
+  },
+  {
+    "id": "rep-product-ds-gap",
+    "kind": "representative",
+    "jobText": "Product Data Scientist role. Must have Python, SQL, and experimentation. Nice to have dbt.",
+    "resumeText": "Python and SQL experience building product dashboards.",
+    "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+    "expectedMissingSkills": ["experimentation"],
+    "notes": "Representative gap for the product analytics path."
+  },
+  {
+    "id": "rep-product-ds-synonym",
+    "kind": "representative",
+    "jobText": "Product Data Scientist role. Must have Python, SQL, and experimentation. Nice to have dbt.",
+    "resumeText": "Python, SQL, and A/B testing experience across growth teams.",
+    "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+    "expectedMissingSkills": [],
+    "notes": "Tests the synonym improvement for experimentation."
+  },
+  {
+    "id": "rep-bi-title-variant",
+    "kind": "representative",
+    "jobText": "BI Developer role. Must have SQL, data modeling, and Power BI. Nice to have Airflow.",
+    "resumeText": "Built Power BI dashboards with SQL and data modeling.",
+    "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+    "expectedMissingSkills": [],
+    "notes": "Tests the improved reference-job selection when the title is shortened."
+  },
+  {
+    "id": "fail-implied-experimentation",
+    "kind": "failure",
+    "jobText": "Product Data Scientist role. Must have Python, SQL, and experimentation. Nice to have dbt.",
+    "resumeText": "Python, SQL, controlled studies, and measured lift across product launches.",
+    "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+    "expectedMissingSkills": [],
+    "notes": "Human evaluators may infer experimentation, but the current rule-based matcher still misses this phrasing."
+  },
+  {
+    "id": "fail-bi-suite-language",
+    "kind": "failure",
+    "jobText": "Business Intelligence Developer role. Must have SQL, data modeling, and Power BI. Nice to have AWS.",
+    "resumeText": "Built semantic models and DAX reports in Microsoft's BI suite with SQL.",
+    "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+    "expectedMissingSkills": [],
+    "notes": "Another realistic failure: the system does not yet map Microsoft BI suite phrasing to Power BI or semantic models to data modeling."
+  }
+]

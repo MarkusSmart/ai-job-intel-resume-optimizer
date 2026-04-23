@@ -13,11 +13,21 @@ export type ProcessedJob = {
   updated_at: string;
 };
 
+export type AnalysisMetadata = {
+  matchedJobId: string | null;
+  matchedJobTitle: string | null;
+  jobSelectionScore: number;
+  titleMatched: boolean;
+  mustHaveMatched: string[];
+  niceToHaveMatched: string[];
+};
+
 export type AnalysisResult = {
   matchScore: number;
   gaps: string[];
   keywords: string[];
   summary: string;
+  metadata: AnalysisMetadata;
 };
 
 export type LlmInsights = {

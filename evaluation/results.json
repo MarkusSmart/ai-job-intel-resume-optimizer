@@ -1,0 +1,365 @@
+{
+  "generatedAt": "2026-04-23T04:03:36.521Z",
+  "datasetSize": 3,
+  "caseCount": 7,
+  "systems": {
+    "baseline": {
+      "label": "baseline",
+      "summary": {
+        "outputQuality": {
+          "averageGapF1": 0.42857142857142855,
+          "exactGapMatchRate": 0.42857142857142855
+        },
+        "endToEndTaskSuccess": {
+          "allCases": 0.42857142857142855,
+          "representativeCases": 0.6
+        },
+        "upstreamComponent": {
+          "metric": "reference_job_selection_accuracy",
+          "accuracyAllCases": 0.8571428571428571,
+          "accuracyRepresentativeCases": 0.8
+        },
+        "failureCaseCount": 2
+      },
+      "cases": [
+        {
+          "id": "rep-data-analyst-gap",
+          "kind": "representative",
+          "notes": "Typical partial match for the starter Data Analyst role.",
+          "expectedMatchedJobId": "data-analyst-exampleco-1",
+          "actualMatchedJobId": "data-analyst-exampleco-1",
+          "expectedMissingSkills": [
+            "python"
+          ],
+          "actualMissingSkills": [
+            "python"
+          ],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.5,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-data-analyst-strong",
+          "kind": "representative",
+          "notes": "Clear strong-match case.",
+          "expectedMatchedJobId": "data-analyst-exampleco-1",
+          "actualMatchedJobId": "data-analyst-exampleco-1",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 1,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-product-ds-gap",
+          "kind": "representative",
+          "notes": "Representative gap for the product analytics path.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [
+            "experimentation"
+          ],
+          "actualMissingSkills": [
+            "experimentation"
+          ],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.4666666666666666,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-product-ds-synonym",
+          "kind": "representative",
+          "notes": "Tests the synonym improvement for experimentation.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "experimentation"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": false,
+          "matchScore": 0.4666666666666666,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-bi-title-variant",
+          "kind": "representative",
+          "notes": "Tests the improved reference-job selection when the title is shortened.",
+          "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+          "actualMatchedJobId": "data-analyst-exampleco-1",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "python"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": false,
+          "taskSuccess": false,
+          "matchScore": 0.35,
+          "selectionScore": 0,
+          "llmOutputValid": true
+        },
+        {
+          "id": "fail-implied-experimentation",
+          "kind": "failure",
+          "notes": "Human evaluators may infer experimentation, but the current rule-based matcher still misses this phrasing.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "experimentation"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": false,
+          "matchScore": 0.4666666666666666,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        },
+        {
+          "id": "fail-bi-suite-language",
+          "kind": "failure",
+          "notes": "Another realistic failure: the system does not yet map Microsoft BI suite phrasing to Power BI or semantic models to data modeling.",
+          "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+          "actualMatchedJobId": "business-intelligence-developer-northwind-3",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "data modeling",
+            "power bi"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": false,
+          "matchScore": 0.2333333333333333,
+          "selectionScore": 1,
+          "llmOutputValid": true
+        }
+      ]
+    },
+    "improved": {
+      "label": "improved",
+      "summary": {
+        "outputQuality": {
+          "averageGapF1": 0.7142857142857143,
+          "exactGapMatchRate": 0.7142857142857143
+        },
+        "endToEndTaskSuccess": {
+          "allCases": 0.7142857142857143,
+          "representativeCases": 1
+        },
+        "upstreamComponent": {
+          "metric": "reference_job_selection_accuracy",
+          "accuracyAllCases": 1,
+          "accuracyRepresentativeCases": 1
+        },
+        "failureCaseCount": 2
+      },
+      "cases": [
+        {
+          "id": "rep-data-analyst-gap",
+          "kind": "representative",
+          "notes": "Typical partial match for the starter Data Analyst role.",
+          "expectedMatchedJobId": "data-analyst-exampleco-1",
+          "actualMatchedJobId": "data-analyst-exampleco-1",
+          "expectedMissingSkills": [
+            "python"
+          ],
+          "actualMissingSkills": [
+            "python"
+          ],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.5,
+          "selectionScore": 22,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-data-analyst-strong",
+          "kind": "representative",
+          "notes": "Clear strong-match case.",
+          "expectedMatchedJobId": "data-analyst-exampleco-1",
+          "actualMatchedJobId": "data-analyst-exampleco-1",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 1,
+          "selectionScore": 22,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-product-ds-gap",
+          "kind": "representative",
+          "notes": "Representative gap for the product analytics path.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [
+            "experimentation"
+          ],
+          "actualMissingSkills": [
+            "experimentation"
+          ],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.4666666666666666,
+          "selectionScore": 24,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-product-ds-synonym",
+          "kind": "representative",
+          "notes": "Tests the synonym improvement for experimentation.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.7,
+          "selectionScore": 24,
+          "llmOutputValid": true
+        },
+        {
+          "id": "rep-bi-title-variant",
+          "kind": "representative",
+          "notes": "Tests the improved reference-job selection when the title is shortened.",
+          "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+          "actualMatchedJobId": "business-intelligence-developer-northwind-3",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [],
+          "gapMetrics": {
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "exactMatch": true
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": true,
+          "matchScore": 0.7,
+          "selectionScore": 23,
+          "llmOutputValid": true
+        },
+        {
+          "id": "fail-implied-experimentation",
+          "kind": "failure",
+          "notes": "Human evaluators may infer experimentation, but the current rule-based matcher still misses this phrasing.",
+          "expectedMatchedJobId": "product-data-scientist-insightworks-2",
+          "actualMatchedJobId": "product-data-scientist-insightworks-2",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "experimentation"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": false,
+          "matchScore": 0.4666666666666666,
+          "selectionScore": 24,
+          "llmOutputValid": true
+        },
+        {
+          "id": "fail-bi-suite-language",
+          "kind": "failure",
+          "notes": "Another realistic failure: the system does not yet map Microsoft BI suite phrasing to Power BI or semantic models to data modeling.",
+          "expectedMatchedJobId": "business-intelligence-developer-northwind-3",
+          "actualMatchedJobId": "business-intelligence-developer-northwind-3",
+          "expectedMissingSkills": [],
+          "actualMissingSkills": [
+            "data modeling",
+            "power bi"
+          ],
+          "gapMetrics": {
+            "precision": 0,
+            "recall": 0,
+            "f1": 0,
+            "exactMatch": false
+          },
+          "matchedJobCorrect": true,
+          "taskSuccess": false,
+          "matchScore": 0.2333333333333333,
+          "selectionScore": 23,
+          "llmOutputValid": true
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "outputQualityDelta": 0.28571428571428575,
+    "exactGapMatchDelta": 0.28571428571428575,
+    "endToEndDelta": 0.28571428571428575,
+    "upstreamDelta": 0.1428571428571429
+  }
+}
